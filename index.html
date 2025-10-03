@@ -1,91 +1,161 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Rocket, Globe2, Copy, Check, Twitter, MessageCircleMore, Link as LinkIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Head from "next/head";
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flat Earth Coin ($FLAT)</title>
+  <meta name="description" content="The world is flat — but your portfolio doesn’t have to be. The moon is fake, gains are real. 🌍🚀" />
+  <link rel="icon" href="/flat-earth-coin-logo.png" />
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-black text-slate-100">
+  <!-- CONFIG (edit these values) -->
+  <script>
+    window.FLAT_CFG = {
+      name: "Flat Earth Coin",
+      ticker: "$FLAT",
+      pumpUrl: "https://pump.fun/coin/REPLACE_ME",
+      chartUrl: "https://dexscreener.com/solana/REPLACE_ME",
+      twitter: "https://x.com/flatearthcoin",
+      telegram: "https://t.me/flatearthcoin",
+      tokenAddress: "REPLACE_TOKEN_ADDRESS"
+    };
+  </script>
 
-// ===================
-// CONFIG — EDIT THESE
-// ===================
-const CONFIG = {
-  name: "Flat Earth Coin",
-  ticker: "$FLAT",
-  // TODO: paste your Pump.fun coin URL after launch
-  pumpUrl: "https://pump.fun/coin/REPLACE_ME",
-  // TODO: paste your Raydium or DexScreener chart when available
-  chartUrl: "https://dexscreener.com/solana/REPLACE_ME",
-  // TODO: replace with your real socials
-  twitter: "https://x.com/flatearthcoin",
-  telegram: "https://t.me/flatearthcoin",
-  // Logo and OG image
-  logoUrl: "/flat-earth-coin-logo.png",
-  ogImage: "/flat-earth-coin-og.png",
-  tagline: "The moon is fake. Gains are real.",
-  supply: "1,000,000,000",
-  taxes: "0% buy | 0% sell (flat fees—literally)",
-  gravityBurn: "Optional: 1% burn a.k.a. ‘Gravity Proof’",
-};
-
-export default function FlatEarthLanding() {
-  const [copied, setCopied] = useState(false);
-  const tokenAddress = "REPLACE_TOKEN_ADDRESS"; // paste once live
-
-  const onCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(tokenAddress);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1400);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  return (
-    <>
-      <Head>
-        <title>Flat Earth Coin ($FLAT)</title>
-        <meta name="description" content="The world is flat — but your portfolio doesn’t have to be. The moon is fake, gains are real. 🌍🚀" />
-        <meta property="og:title" content="Flat Earth Coin ($FLAT)" />
-        <meta property="og:description" content="The world is flat — but your portfolio doesn’t have to be. The moon is fake, gains are real. 🌍🚀" />
-        <meta property="og:image" content={CONFIG.ogImage} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={CONFIG.ogImage} />
-      </Head>
-
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-black text-slate-100">
-        {/* NAVBAR */}
-        <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-slate-900/50 border-b border-white/10">
-          <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              {CONFIG.logoUrl ? (
-                <img src={CONFIG.logoUrl} alt={`${CONFIG.name} logo`} className="h-9 w-9 rounded-full" />
-              ) : (
-                <div className="h-9 w-9 grid place-items-center rounded-full bg-sky-600/20 border border-sky-500/30">
-                  <Globe2 className="h-5 w-5" />
-                </div>
-              )}
-              <span className="font-semibold tracking-wide">{CONFIG.name} <span className="text-sky-400">{CONFIG.ticker}</span></span>
-            </div>
-            <nav className="hidden md:flex items-center gap-6 text-sm text-slate-300">
-              <a href="#about" className="hover:text-white">About</a>
-              <a href="#tokenomics" className="hover:text-white">Tokenomics</a>
-              <a href="#howto" className="hover:text-white">How to Buy</a>
-              <a href="#roadmap" className="hover:text-white">Roadmap</a>
-              <a href="#faq" className="hover:text-white">FAQ</a>
-            </nav>
-            <div className="flex items-center gap-2">
-              <Button asChild className="bg-sky-600 hover:bg-sky-500">
-                <a href={CONFIG.pumpUrl} target="_blank" rel="noreferrer">Buy on Pump.fun</a>
-              </Button>
-            </div>
-          </div>
-        </header>
-
-        {/* (rest of site unchanged) */}
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-slate-900/50 border-b border-white/10">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="/flat-earth-coin-logo.png" alt="Flat Earth Coin logo" class="h-9 w-9 rounded-full border border-sky-500/30"/>
+        <span class="font-semibold tracking-wide">Flat Earth Coin <span class="text-sky-400">$FLAT</span></span>
       </div>
-    </>
-  );
-}
-      
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#tokenomics" class="hover:text-white">Tokenomics</a>
+        <a href="#howto" class="hover:text-white">How to Buy</a>
+        <a href="#roadmap" class="hover:text-white">Roadmap</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+      </nav>
+      <a id="pumpBtn" href="#" target="_blank" class="px-4 py-2 rounded-md bg-sky-600 hover:bg-sky-500">Buy on Pump.fun</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="mx-auto max-w-6xl px-4 pt-16 pb-20 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+        The world is flat — <span class="block text-sky-400">but your portfolio doesn’t have to be.</span>
+      </h1>
+      <p class="mt-4 text-slate-300 text-lg max-w-xl">
+        The moon is fake. Gains are real. NASA lied, but $FLAT tells the truth. Join the <span class="text-sky-300">Flatliners</span> and meme to the edge.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <a id="pumpBtn2" href="#" target="_blank" class="px-4 py-2 rounded-md bg-sky-600 hover:bg-sky-500">🚀 Buy $FLAT</a>
+        <a id="chartBtn" href="#" target="_blank" class="px-4 py-2 rounded-md border border-slate-700 text-slate-200 hover:bg-slate-800">📊 Chart</a>
+        <a id="twitterBtn" href="#" target="_blank" class="px-4 py-2 rounded-md border border-slate-700 text-slate-200 hover:bg-slate-800">🐦 Twitter</a>
+        <a id="tgBtn" href="#" target="_blank" class="px-4 py-2 rounded-md border border-slate-700 text-slate-200 hover:bg-slate-800">💬 Telegram</a>
+      </div>
+      <div class="mt-6 bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+        <div class="text-sm text-slate-300 mb-2">Token Address</div>
+        <div class="flex items-center gap-3">
+          <code id="tokenAddress" class="text-xs md:text-sm text-slate-200 break-all">REPLACE_TOKEN_ADDRESS</code>
+          <button id="copyBtn" class="ml-auto px-3 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-sm">Copy</button>
+          <span id="copiedBadge" class="hidden text-xs text-emerald-400">Copied!</span>
+        </div>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="aspect-square rounded-3xl border border-sky-500/20 bg-gradient-to-br from-sky-900/30 via-slate-900/30 to-indigo-900/30 p-6 shadow-2xl grid place-items-center">
+        <div class="h-64 w-64 md:h-80 md:w-80 relative">
+          <div class="absolute inset-0 rounded-full bg-sky-700/40 blur-2xl"></div>
+          <div class="absolute inset-0 rounded-full border border-sky-400/30 bg-gradient-to-b from-sky-600/40 to-sky-900/50"></div>
+          <div class="absolute -right-2 bottom-10 animate-bounce">🚀</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-3 gap-6">
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+      <h3 class="font-semibold text-lg mb-2">What is $FLAT?</h3>
+      <p class="text-slate-300">A satire-fueled memecoin proving you don’t need a globe to orbit gains. Mock-serious lore, viral memes, and relentless community energy.</p>
+    </div>
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+      <h3 class="font-semibold text-lg mb-2">Why it’s catchy</h3>
+      <p class="text-slate-300">Flat Earth culture is instantly recognizable. The joke writes itself: every pump is “proof”, every dump is “gravity is fake”.</p>
+    </div>
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+      <h3 class="font-semibold text-lg mb-2">Community Rituals</h3>
+      <p class="text-slate-300">Spam 🌍🔎🔺. Post fake NASA charts. Call non-holders “rounders”. Weekly meme contests at the Edge.</p>
+    </div>
+  </section>
+
+  <!-- TOKENOMICS -->
+  <section id="tokenomics" class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-3xl font-bold mb-2">Tokenomics</h2>
+    <p class="text-slate-300 mb-8">Fees as flat as the Earth.</p>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">Supply</h3><p class="text-slate-300">1,000,000,000 $FLAT</p></div>
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">Taxes</h3><p class="text-slate-300">0% buy | 0% sell</p></div>
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">Gravity Burn</h3><p class="text-slate-300">Optional 1% burn = “Gravity Proof”</p></div>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section id="howto" class="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-2 gap-6">
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">1) Fund a Solana wallet</h3><p class="text-slate-300">Use Phantom or Solflare. Buy or transfer SOL for gas & swaps.</p></div>
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">2) Go to Pump.fun</h3><p class="text-slate-300">Open the coin page and connect wallet. Slippage 0–2% is fine.</p></div>
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">3) Buy early, meme hard</h3><p class="text-slate-300">Grab your $FLAT. Share memes, raid socials, recruit Flatliners.</p></div>
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">4) Verify token</h3><p class="text-slate-300">Check the contract address before buying.</p></div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" class="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-3 gap-6">
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">Phase 1 — The Horizon</h3><p class="text-slate-300">Launch · Meme kit · Twitter raids · TG growth 5k</p></div>
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">Phase 2 — Anti-Gravity</h3><p class="text-slate-300">DEX listing · Contests · Influencer collabs · Edge Map NFT</p></div>
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">Phase 3 — Off the Edge</h3><p class="text-slate-300">CEX pitch · Merch · Lore expansion · “Moon is Fake” event</p></div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-2 gap-6">
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">Is this financial advice?</h3><p class="text-slate-300">No. $FLAT is a meme project with no promises of profit. DYOR.</p></div>
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5"><h3 class="font-semibold mb-2">Is the Earth really flat?</h3><p class="text-slate-300">Only our fees are. The joke is the utility. Enjoy responsibly. 🌍</p></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-400 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+      <div>© <span id="year"></span> Flat Earth Coin. Community project.</div>
+      <div class="flex items-center gap-3">
+        <a id="twitterLink" href="#" target="_blank" class="hover:text-slate-200">Twitter</a>
+        <span>•</span>
+        <a id="tgLink" href="#" target="_blank" class="hover:text-slate-200">Telegram</a>
+        <span>•</span>
+        <a id="pumpLink" href="#" target="_blank" class="hover:text-slate-200">Pump.fun</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS to wire links & copy button -->
+  <script>
+    (function(){
+      const C = window.FLAT_CFG;
+      const byId = id => document.getElementById(id);
+      ["pumpBtn","pumpBtn2","pumpLink"].forEach(id=>{ const el=byId(id); if(el) el.href=C.pumpUrl; });
+      byId("chartBtn").href = C.chartUrl;
+      byId("twitterBtn").href = C.twitter; byId("twitterLink").href = C.twitter;
+      byId("tgBtn").href = C.telegram; byId("tgLink").href = C.telegram;
+      byId("tokenAddress").textContent = C.tokenAddress;
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const copyBtn = byId("copyBtn"), badge=byId("copiedBadge");
+      copyBtn.addEventListener('click', async ()=>{ 
+        await navigator.clipboard.writeText(C.tokenAddress); 
+        badge.classList.remove('hidden'); 
+        setTimeout(()=>badge.classList.add('hidden'),1200);
+      });
+    })();
+  </script>
+</body>
+</html>
